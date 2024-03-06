@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,38 @@ namespace CMP1903_A1_2324
     {
         static void Main(string[] args)
         {
-            /*
-             * Create a Game object and call its methods.
-             * Create a Testing object to verify the output and operation of the other classes.
-             */
+
+            //Creating instances of the game and testing class, aswell as an exit variable for exiting a loop
+            Game diceGame = new Game();
+            Testing debug = new Testing();
+            bool exit = false;
+
+            //Rolling the dice and then outputting the results
+            Console.WriteLine("Welcome to the dice game!\n3 Dice will be rolled and the result will be shown below.\n");
+            diceGame.RollDice();
+            debug.Debugging(diceGame);
+
+            //Offering the user a chance to reroll the dice
+            Console.WriteLine("\nWould you like a reroll? Press any key for yes, or 'q' to exit.");
+            while (!exit)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                //Sets the input to a lowercase character, error checking for a capital "Q" input
+                char keyChar = char.ToLowerInvariant(key.KeyChar);
+
+                //Checks input. Guard clause not needed as any key can be pressed for a reroll
+                if (keyChar == 'q')
+                {
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.Clear();
+                    diceGame.reRollResult();
+                    Console.WriteLine("\nWould you like a reroll? Press any key for yes, or 'q' to exit.");
+                }
+            }
         }
     }
 }

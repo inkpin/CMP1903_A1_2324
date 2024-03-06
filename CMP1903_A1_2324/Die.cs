@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace CMP1903_A1_2324
 {
+
+    /// <summary>
+    /// This class creates a random instance, creates a property of the roll and then assigns the rolls their values.
+    /// </summary>
+
     internal class Die
     {
-        /*
-         * The Die class should contain one property to hold the current die value,
-         * and one method that rolls the die, returns and integer and takes no parameters.
-         */
+        private static Random random = new Random();
 
-        //Property
+        public int LastRoll {  get; private set; }
 
-
-        //Method
-
-
+        public int Roll()
+        {
+            LastRoll = random.Next(1,7);
+            return LastRoll;
+        }
     }
 }
