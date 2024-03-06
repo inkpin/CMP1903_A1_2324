@@ -27,16 +27,19 @@ namespace CMP1903_A1_2324
             while (!exit)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                
-                if (key.KeyChar == 'q') //Checks input. Guard clause not needed as any key can be pressed for a reroll
+
+                //Sets the input to a lowercase character, error checking for a capital "Q" input
+                char keyChar = char.ToLowerInvariant(key.KeyChar);
+
+                //Checks input. Guard clause not needed as any key can be pressed for a reroll
+                if (keyChar == 'q')
                 {
-                    exit = true;
                     Environment.Exit(0);
                 }
                 else
                 {
                     Console.Clear();
-                    diceGame.ReRoll();
+                    diceGame.reRollResult();
                     Console.WriteLine("\nWould you like a reroll? Press any key for yes, or 'q' to exit.");
                 }
             }
